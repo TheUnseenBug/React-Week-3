@@ -13,7 +13,6 @@ const Card: FC<test> = ({ test }) => {
           className="flex flex-col items-center px-4 text-white bg-red-400 rounded-md "
           key={t.id}
         >
-          <h2>{t.title}</h2>
           <div className="flex justify-center gap-6">
             <p>{t.city}</p>
             <p>{t.date}</p>

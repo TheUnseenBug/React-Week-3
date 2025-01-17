@@ -1,21 +1,27 @@
-
-import { create } from 'zustand';
-import { Todo, TodoStore } from '../types/todo';
+import { create } from "zustand";
+import { Todo, TodoStore } from "../types/todo";
 
 const useTodoStore = create<TodoStore>((set) => ({
   todos: [],
 
-//Lägga till stad sen todo i sen aktiviteter i stad lista?
+  //Lägga till stad sen todo i sen aktiviteter i stad lista?
 
   // Lägger till todo i listan
   addTodo: (todo: Todo) =>
     set((state) => ({
-      todos: [...state.todos, { id: "1", title: todo.title, activities: todo.activities, date: todo.date, city: todo.city }],
+      todos: [
+        ...state.todos,
+        {
+          id: "1",
+          activities: todo.activities,
+          date: todo.date,
+          city: todo.city,
+        },
+      ],
     })),
 
-
   // Tar bort todo från listan
-  removeTodo: (id:string) =>
+  removeTodo: (id: string) =>
     set((state) => ({
       todos: state.todos.filter((todo) => todo.id !== id),
     })),
