@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import useTodoStore from "./store/activityStore.ts";
 import Card from "./components/card.tsx";
 import Modal from "./components/modal.tsx";
+import Button from "./components/button";
 import { Todo } from "./types/todo.ts";
+import Forms from "./components/forms.tsx";
+import Modal2 from "./components/modal2.tsx";
+
 function App() {
   const { todos, addTodo, editTodo, removeTodo } = useTodoStore();
   const [open, setOpen] = useState(false);
@@ -25,12 +29,17 @@ function App() {
 
   return (
     <main className="bg-slate-600">
-      <Modal
+      {/* <Modal
         open={open}
         setOpen={setOpen}
         editTodo={editTodo}
         removeTodo={removeTodo}
-      />
+        todo={todo}
+      /> */}
+      <Modal2 open={open} setOpen={setOpen}>
+        <Forms />
+      </Modal2>
+      <Button text="Add" onClick={() => setOpen(true)} />
       <form
         onSubmit={handleSubmit}
         className="flex items-center justify-center gap-3 p-3 text-white"

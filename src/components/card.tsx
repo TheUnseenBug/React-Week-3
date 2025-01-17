@@ -9,7 +9,6 @@ interface test {
 }
 
 const Card: FC<test> = ({ todo, setOpen, setTodo }) => {
-  setTodo(todo);
   return (
     <li>
       <div
@@ -27,7 +26,13 @@ const Card: FC<test> = ({ todo, setOpen, setTodo }) => {
             </li>
           ))}
         </ul>
-        <Button text="Edit" onClick={() => setOpen(true)} />
+        <Button
+          text="Edit"
+          onClick={() => {
+            setOpen(true);
+            setTodo(todo);
+          }}
+        />
       </div>
     </li>
   );
