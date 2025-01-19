@@ -37,7 +37,12 @@ function App() {
         todo={todo}
       /> */}
       <Modal2 open={open} setOpen={setOpen}>
-        <Forms />
+        <Forms
+          setOpen={setOpen}
+          todo={todo}
+          editTodo={editTodo}
+          addTodo={addTodo}
+        />
       </Modal2>
       <Button text="Add" onClick={() => setOpen(true)} />
       <form

@@ -19,7 +19,6 @@ interface props {
 }
 
 const Modal: FC<props> = ({ open, setOpen, editTodo, removeTodo, todo }) => {
-  console.log(todo);
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-10">
       <DialogBackdrop
