@@ -32,21 +32,6 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
     updatedFields.splice(index, 1);
     setFields(updatedFields);
   };
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   const form = e.currentTarget as HTMLFormElement;
-  //   const inputElement = form.elements.namedItem("addCity") as HTMLInputElement;
-  //   const value = inputElement?.value.trim();
-  //   if (value) {
-  //     addTodo({
-  //       id: Math.random().toString(),
-  //       city: value,
-  //     });
-  //     inputElement.value = "";
-  //   }
-  // };
-
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (todo) {
