@@ -3,9 +3,7 @@ import { Todo, TodoStore } from "../types/todo";
 
 const useTodoStore = create<TodoStore>((set) => ({
   todos: [],
-
-  //Lägga till stad sen todo i sen aktiviteter i stad lista?
-
+  
   // Lägger till todo i listan
   addTodo: (todo: Todo) =>
     set((state) => ({

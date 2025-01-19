@@ -17,21 +17,25 @@ interface props {
   addTodo: (todo: Todo) => void;
   todo: Todo | undefined;
 }
-
+//props för att kontrollera när modal ska öppnas och hantera todo i store
 const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
   const [destination, setDestination] = useState<string>();
   const [date, setDate] = useState<string>();
   const [fields, setFields] = useState<string[]>([""]);
 
+  //Funktioner för att lägga till aktiviteter
   const handleAddField = () => {
     setFields([...fields, ""]);
   };
 
+  //Funktion för att ta bort aktiviteter
   const handleRemoveField = (index: number) => {
     const updatedFields = [...fields];
     updatedFields.splice(index, 1);
     setFields(updatedFields);
   };
+
+  //Funktion för att spara eller redigera todo
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (todo) {
@@ -57,6 +61,7 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
     }
     setOpen(false);
   };
+  
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-lg px-4">
       <Fieldset className="p-6 space-y-6 rounded-xl bg-white/5 sm:p-10">

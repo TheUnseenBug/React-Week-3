@@ -1,5 +1,3 @@
-import React from "react";
-
 const Header = () => {
   return (
     <header className="flex items-center justify-center p-3 text-white bg-red-700">

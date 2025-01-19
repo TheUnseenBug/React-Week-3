@@ -13,6 +13,7 @@ const Modal2: FC<props> = ({
 
   children,
 }) => {
+  //Modal där children är det som ska visas i modalen
   return (
     <Dialog
       open={open}

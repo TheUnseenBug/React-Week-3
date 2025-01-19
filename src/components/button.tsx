@@ -5,7 +5,7 @@ interface props {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
 }
-
+//props för att kontrollera text, vad som händer onClick och typen av knapp
 const Button: FC<props> = ({ text, onClick, type }) => {
   return (
     <button

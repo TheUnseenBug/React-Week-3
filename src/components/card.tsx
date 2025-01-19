@@ -7,7 +7,7 @@ interface test {
   setOpen: (open: boolean) => void;
   setTodo: (todo: Todo) => void;
 }
-
+//props för att kontrollera när modal ska öppnas och spara todo i state
 const Card: FC<test> = ({ todo, setOpen, setTodo }) => {
   return (
     <li>
