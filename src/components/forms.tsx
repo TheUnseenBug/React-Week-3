@@ -49,15 +49,34 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if ("add") {
+    if (todo) {
+      if (destination && date && fields && fields.length > 0) {
+        editTodo({
+          id: Math.random().toString(),
+          city: destination,
+          date: date,
+          activities: fields,
+        });
+      }
     } else {
+      if (destination && date && fields && fields.length > 0) {
+        addTodo({
+          id: Math.random().toString(),
+          city: destination,
+          date: date,
+          activities: fields,
+        });
+      } else {
+        console.log("Please fill in all fields");
+      }
     }
+    setOpen(false);
   };
   return (
-    <div className="w-full max-w-lg px-4">
+    <form onSubmit={handleSubmit} className="w-full max-w-lg px-4">
       <Fieldset className="p-6 space-y-6 rounded-xl bg-white/5 sm:p-10">
         <Legend className="font-semibold text-white text-base/7">
-          Edit travel plans
+          Add travel plans
         </Legend>
         <Field>
           <Label className="font-medium text-white text-sm/6">
@@ -89,11 +108,14 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
         <Field>
           <Label className="font-medium text-white text-sm/6">Activities</Label>
           <Description className="text-sm/6 text-white/50">
-            If you have a tiger, we'd like to know about it.
+            If you have more than one activity, press add more activities.
           </Description>
           <Button onClick={handleAddField} text="Add more activities" />
           {fields.map((activity, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative py-3">
+              <Label className="font-medium text-white text-sm/6">
+                Activity
+              </Label>
               <Input
                 value={activity}
                 onChange={(e) => {
@@ -110,10 +132,12 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
             </div>
           ))}
         </Field>
-        <Button text="Save" type="submit" />
-        <Button text="Cancel" onClick={() => setOpen(false)} />
+        <section className="flex justify-end gap-4">
+          <Button text="Cancel" onClick={() => setOpen(false)} />
+          <Button text="Save" type="submit" />
+        </section>
       </Fieldset>
-    </div>
+    </form>
   );
 };
 export default Forms;

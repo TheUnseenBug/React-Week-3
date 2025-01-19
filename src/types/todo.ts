@@ -7,7 +7,7 @@ export interface Todo {
 
 export interface TodoStore {
   todos: Todo[];
-  addTodo: (todo: Pick<Todo, 'id' | 'city'>) => void;
+  addTodo: (todo: Todo) => void;
   removeTodo: (id: string) => void;
   editTodo: (todo: Todo) => void;
 }

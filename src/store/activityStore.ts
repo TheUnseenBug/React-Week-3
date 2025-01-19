@@ -7,13 +7,15 @@ const useTodoStore = create<TodoStore>((set) => ({
   //Lägga till stad sen todo i sen aktiviteter i stad lista?
 
   // Lägger till todo i listan
-  addTodo: (todo: Pick<Todo, 'id' | 'city'>) =>
+  addTodo: (todo: Todo) =>
     set((state) => ({
       todos: [
         ...state.todos,
         {
           id: todo.id,
           city: todo.city,
+          activities: todo.activities,
+          date: todo.date,
         },
       ],
     })),
