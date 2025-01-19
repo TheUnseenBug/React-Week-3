@@ -15,7 +15,7 @@ interface props {
   setOpen: (open: boolean) => void;
   editTodo: (todo: Todo) => void;
   addTodo: (todo: Todo) => void;
-  todo: Todo;
+  todo: Todo | undefined;
 }
 
 const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
@@ -111,7 +111,7 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
           ))}
         </Field>
         <Button text="Save" type="submit" />
-        <Button text="Cancel" onClick={setOpen(false)} />
+        <Button text="Cancel" onClick={() => setOpen(false)} />
       </Fieldset>
     </div>
   );
