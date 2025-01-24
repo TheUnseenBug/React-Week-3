@@ -22,6 +22,7 @@ function App() {
           todo={todo}
           editTodo={editTodo}
           addTodo={addTodo}
+          setTodo={setTodo}
         />
       </Modal2>
       <Button text="Add" onClick={() => setOpen(true)} />
