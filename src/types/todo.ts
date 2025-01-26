@@ -3,6 +3,7 @@ export interface Todo {
   activities?: string[];
   date?: string;
   city: string;
+  image?: string;
 }
 
 export interface TodoStore {
