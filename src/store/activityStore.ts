@@ -2,13 +2,14 @@ import { create } from "zustand";
 import { persist, PersistOptions } from "zustand/middleware";
 import { Todo, TodoStore } from "../types/todo";
 
+//Helper för att spara i localstorage
 const customStorage: PersistOptions<TodoStore, TodoStore>['storage'] = {
   getItem: async (name) => {
     const item = localStorage.getItem(name);
-    return item ? JSON.parse(item) : null; // Parse the JSON string back to an object
+    return item ? JSON.parse(item) : null; 
   },
   setItem: async (name, value) => {
-    localStorage.setItem(name, JSON.stringify(value)); // Stringify the object before storing
+    localStorage.setItem(name, JSON.stringify(value));
   },
   removeItem: async (name) => {
     localStorage.removeItem(name);
@@ -20,7 +21,7 @@ const useTodoStore = create<TodoStore>()(
     (set) => ({
       todos: [],
       
-      // Add todo to the list
+      
       addTodo: (todo: Todo) =>
         set((state) => ({
           todos: [
@@ -34,13 +35,13 @@ const useTodoStore = create<TodoStore>()(
           ],
         })),
 
-      // Remove todo from the list
+
       removeTodo: (id: string) =>
         set((state) => ({
           todos: state.todos.filter((todo) => todo.id !== id),
         })),
 
-      // Edit todo in the list
+
       editTodo: (todo: Todo) =>
         set((state) => ({
           todos: state.todos.map((t) =>
@@ -49,8 +50,8 @@ const useTodoStore = create<TodoStore>()(
         })),
     }),
     {
-      name: "todo-storage", // Name of the storage key
-      storage: customStorage, // Use the custom storage
+      name: "todo-storage", // Localstorage nyckel
+      storage: customStorage, // Använda custom storage
     }
   )
 );
