@@ -29,7 +29,9 @@ function App() {
     const fetchImages = async () => {
       for (const todo of todos) {
         if (!todo.image) {
-          // Fetch images from Unsplash
+          // Fetch images from Unsplash based on city name and chooses first result
+
+          //future upgrade to fetch multiple images and display them in a carousel or allow user to choose image
           try {
             const response = await axios.get(
               `https://api.unsplash.com/search/photos`,
