@@ -18,9 +18,8 @@ const customStorage: PersistOptions<TodoStore, TodoStore>['storage'] = {
 
 const useTodoStore = create<TodoStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       todos: [],
-      
       
       addTodo: (todo: Todo) =>
         set((state) => ({
@@ -48,6 +47,13 @@ const useTodoStore = create<TodoStore>()(
             t.id === todo.id ? { ...t, ...todo } : t
           ),
         })),
+
+      getTodo: (id: string ) => { 
+        const todos = get().todos; // Access the current state of todos
+        const todo = todos.find((t) => t.id === id);
+        return todo ? todo : undefined;
+      }
+
     }),
     {
       name: "todo-storage", // Localstorage nyckel
