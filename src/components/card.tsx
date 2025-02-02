@@ -27,13 +27,7 @@ const Card: FC<test> = ({ todo }) => {
               </li>
             ))}
           </ul>
-          {/* <Button
-            text="Edit"
-            onClick={() => {
-              setOpen(true);
-              setTodo(todo);
-            }}
-          /> */}
+
         </div>
       </Link>
     </li>
@@ -41,4 +35,3 @@ const Card: FC<test> = ({ todo }) => {
 };
 
 export default Card;
-//() => editTodo(t)

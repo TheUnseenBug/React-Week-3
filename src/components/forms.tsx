@@ -12,14 +12,13 @@ import Button from "./button";
 import { Todo } from "../types/todo";
 
 interface props {
-  setOpen: (open: boolean) => void;
-  editTodo: (todo: Todo) => void;
-  addTodo: (todo: Todo) => void;
-  todo: Todo | undefined;
-  setTodo: (todo: Todo | undefined) => void;
+  setOpen?: (open: boolean) => void;
+  editTodo?: (todo: Todo) => void;
+  addTodo?: (todo: Todo) => void;
+  todo?: Todo | undefined;
 }
 //props för att kontrollera när modal ska öppnas och hantera todo i store
-const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo, setTodo }) => {
+const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
   const [destination, setDestination] = useState(todo?.city || "");
   const [date, setDate] = useState(todo?.date || "");
   const [fields, setFields] = useState<string[]>(todo?.activities || [""]);
@@ -53,13 +52,16 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo, setTodo }) => {
         date: date,
         activities: fields,
       };
-      if (todo) {
+      if (todo && editTodo) {
         editTodo(newTodo);
-      } else {
+      }
+      if (addTodo) {
         addTodo(newTodo);
       }
-      setTodo(undefined);
-      setOpen(false);
+
+      if (setOpen) {
+        setOpen(false);
+      }
     } else {
       console.log("Please fill in all fields");
     }
@@ -154,7 +156,10 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo, setTodo }) => {
           ))}
         </Field>
         <section className="flex justify-end gap-4">
-          <Button text="Cancel" onClick={() => setOpen(false)} />
+          <Button
+            text="Cancel"
+            onClick={() => (setOpen ? setOpen(false) : null)}
+          />
           <Button text={todo ? "Edit" : "Add"} type="submit" />
         </section>
       </Fieldset>
